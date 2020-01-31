@@ -1,12 +1,10 @@
-package modelohibernatedao;
+package testhibernate.mihibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-import testhibernate.book2storepedrom.Empleado;
 
 public class Persistiendo {
 	public static void main(String[] args) {

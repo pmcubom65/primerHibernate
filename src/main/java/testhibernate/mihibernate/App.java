@@ -1,4 +1,4 @@
-package testhibernate.book2storepedrom;
+package testhibernate.mihibernate;
 
 import java.util.List;
 

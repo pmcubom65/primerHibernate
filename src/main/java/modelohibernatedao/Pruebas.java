@@ -6,7 +6,7 @@ public class Pruebas {
 		ServicioEmpleado se=new ServicioEmpleado();
 		EmpleadoEntity ee=new EmpleadoEntity("5556", "PERICO", "Empleado", "7902", "2000-08-05", "1000", "20", "10");
 		
-		//funciona	System.out.println(se.findAll());
+			System.out.println(se.findAll());
 	
 		// funciona System.out.println(se.findById("7369"));
 		
