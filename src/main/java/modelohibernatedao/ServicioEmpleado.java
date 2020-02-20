@@ -2,6 +2,8 @@ package modelohibernatedao;
 
 import java.util.List;
 
+import modelo.Empleado;
+
 public class ServicioEmpleado {
 	private EmpleadoDao empleadodao;
 	
@@ -10,23 +12,23 @@ public class ServicioEmpleado {
 	}
 	
 	
-	  public void persist(EmpleadoEntity entity) {
+	  public void persist(Empleado entity) {
 		  empleadodao.openCurrentSessionwithTransaction();
 		  
 		  empleadodao.persist(entity);
 		  empleadodao.closeCurrentSessionwithTransaction();
     }
  
-	   public void update(EmpleadoEntity entity) {
+	   public void update(Empleado entity) {
 		   empleadodao.openCurrentSessionwithTransaction();
 		   empleadodao.update(entity);
 		   empleadodao.closeCurrentSessionwithTransaction();
 	    }
 	 
  
-	   public EmpleadoEntity findById(String id) {
+	   public Empleado findById(String id) {
 		   empleadodao.openCurrentSession();
-		   EmpleadoEntity ee = empleadodao.findById(id);
+		   Empleado ee = empleadodao.findById(id);
 	        empleadodao.closeCurrentSession();
 	        return ee;
 	    }
@@ -34,15 +36,15 @@ public class ServicioEmpleado {
 	    public boolean delete(String id) {
 	    	
 	    	empleadodao.openCurrentSessionwithTransaction();
-	        EmpleadoEntity ee = empleadodao.findById(id);
+	        Empleado ee = empleadodao.findById(id);
 	        empleadodao.delete(ee);
 	        empleadodao.closeCurrentSessionwithTransaction();
-	        return (ee instanceof EmpleadoEntity);
+	        return (ee instanceof Empleado);
 	    }
 	    
-	    public List<EmpleadoEntity> findAll() {
+	    public List<Empleado> findAll() {
 	    	empleadodao.openCurrentSession();
-	        List<EmpleadoEntity> ee = empleadodao.findAll();
+	        List<Empleado> ee = empleadodao.findAll();
 	        empleadodao.closeCurrentSession();
 	        return ee;
 	    }

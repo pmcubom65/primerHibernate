@@ -1,4 +1,4 @@
-package modelohibernatedao;
+package modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity(name="emple")
 @Table(name="emple")
-public class EmpleadoEntity {
+public class Empleado {
 	@Id
 	private String emp_no;
 	@Column(name = "APELLIDO")
@@ -26,14 +26,14 @@ public class EmpleadoEntity {
 	private String dept_no;
 
 	
-	public EmpleadoEntity() {
+	public Empleado() {
 	}
 
-	public EmpleadoEntity(String emp_no) {
+	public Empleado(String emp_no) {
 		this.emp_no=emp_no;
 	}
 	
-	public EmpleadoEntity(String emp_no, String apellido, String oficio, String dir, String fecha_alt, String salario,
+	public Empleado(String emp_no, String apellido, String oficio, String dir, String fecha_alt, String salario,
 			String comision, String dept_no) {
 
 		this.emp_no = emp_no;

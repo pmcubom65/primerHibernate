@@ -7,8 +7,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-public class EmpleadoDao implements Dao<EmpleadoEntity, String>{
+import modelo.Empleado;
+
+
+
+public class EmpleadoDao implements Dao<Empleado, String>{
 
 	
 	private Session currentSession;
@@ -19,11 +24,12 @@ public class EmpleadoDao implements Dao<EmpleadoEntity, String>{
 	
 	
 	 private static SessionFactory getSessionFactory() {
-	        Configuration configuration = new Configuration().configure();
-	        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+			Configuration configuration = new Configuration().configure();
+			configuration.addAnnotatedClass(modelo.Empleado.class);
+			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 	                .applySettings(configuration.getProperties());
-	        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-	        return sessionFactory;
+			SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+			return sessionFactory;
 	    }
 	
 	
@@ -32,14 +38,7 @@ public class EmpleadoDao implements Dao<EmpleadoEntity, String>{
 	        currentSession = getSessionFactory().openSession();
 	        return currentSession;
 	    }
-	
-	
-	
 
-
-	
-	
-	
 	
     public Session getCurrentSession() {
         return currentSession;
@@ -73,30 +72,36 @@ public class EmpleadoDao implements Dao<EmpleadoEntity, String>{
         this.currentTransaction = currentTransaction;
     }
     
-    public void persist(EmpleadoEntity entity) {
+    public void persist(Empleado entity) {
         getCurrentSession().save(entity);
     }
     
-    public void update(EmpleadoEntity entity) {
+    public void update(Empleado entity) {
         getCurrentSession().update(entity);
     }
-    public EmpleadoEntity findById(String id) {
-    	EmpleadoEntity ee = (EmpleadoEntity) getCurrentSession().get(EmpleadoEntity.class, id);
+    public Empleado findById(String id) {
+    	Empleado ee = (Empleado) getCurrentSession().get(Empleado.class, id);
         return ee; 
     }
-    public void delete(EmpleadoEntity entity) {
+    public void delete(Empleado entity) {
         getCurrentSession().delete(entity);
     }
     
-    @SuppressWarnings("unchecked")
-    public List<EmpleadoEntity> findAll() {
-        List<EmpleadoEntity> lalista = (List<EmpleadoEntity>) getCurrentSession().createQuery("from emple").list();
-        return lalista;
+
+    
+	public List<Empleado> findAll() {
+       
+		Query query = getCurrentSession().createQuery("from emple");
+		List<Empleado> listado=(List<Empleado>) query.getResultList();
+	
+		return listado;
+        
+        
     }
  
     public void deleteAll() {
-        List<EmpleadoEntity> entityList = findAll();
-        for (EmpleadoEntity entity : entityList) {
+        List<Empleado> entityList = findAll();
+        for (Empleado entity : entityList) {
             delete(entity);
         }
     }
