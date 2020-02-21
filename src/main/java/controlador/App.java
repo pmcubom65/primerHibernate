@@ -31,11 +31,14 @@ public class App
        ServicioEmpleado se=new ServicioEmpleado();
        System.out.println(se.delete("1500"));*/
       
-       Departamento d=new Departamento("200","LIMPIEZA","JAEN");
+  /*     Departamento d=new Departamento("200","LIMPIEZA","JAEN");
        ServicioDepartamento sd=new ServicioDepartamento();
        sd.delete("200");
-       System.out.println(sd.findAll());
-       
+       System.out.println(sd.findAll());*/
+    	
+    	
+    	ServicioEmpleado se=new ServicioEmpleado();
+    	System.out.println(se.aplicarProcedimiento());
        
        
     }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import modelo.Empleado;
 
+
 public class ServicioEmpleado {
 	private EmpleadoDao empleadodao;
 	
@@ -59,4 +60,15 @@ public class ServicioEmpleado {
     public EmpleadoDao bookDao() {
         return empleadodao;
     }
+    
+    
+    public List<Empleado> aplicarProcedimiento() {
+    	empleadodao.openCurrentSessionwithTransaction();
+    	List<Empleado> emples=empleadodao.procedimiento();
+    	empleadodao.closeCurrentSessionwithTransaction();
+    	return emples;
+    }
+    
+    
+    
 }
